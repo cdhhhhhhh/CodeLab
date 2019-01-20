@@ -59,6 +59,11 @@ def find_goods(flag):
 	return 'null';
 	
 while True:
+	for item in goods:
+		print('商品%s>>>价格%s'%(str(list(item.keys())[0]),str(list(item.values())[0])))
+	print('当前金额%s'%total)
+	print('当前余额%s'%money)
+
 	flag = input('输入商品,q退出,t当前购买商品?')
 	nowTotal = 0;
 	num = 0
@@ -68,7 +73,7 @@ while True:
 		for key,value in goods_list.items():
 			print('%s>>>>%s'%(key,value))
 			print('当前金额%s'%total)
-			continue	
+		continue	
 	flag = find_goods(flag)
 	if flag != 'null':
 			num = int(input('输入数量'))	
