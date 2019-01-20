@@ -18,7 +18,7 @@ with open('./text.txt') as fs:
 		user.append({line.split('|')[0]:line.split('|')[1].replace('\n','')});
 with open('./baname.txt') as fs:
 	for line in fs:
-			banName.append(line)
+		banName.append(line)
 
 while True:
 	if not flagU:

@@ -45,7 +45,7 @@ layer = 0
 
 
 for key,value in menu.items():
-	print('%s%s'%(key,value))
+	print('%s>>>%s'%(key,list(value.keys())))
 	
 def go_layer():
 	
@@ -62,7 +62,7 @@ def go_layer():
 		tempV = []
 		tempK =[]
 	for i in range(0,len(temp_values)):
-		print('%s%s'%(temp_key[i],temp_values[i]))
+		print('%s>>>%s'%(temp_key[i],list(temp_values[i].keys())))
 	return;
 
 while True:
