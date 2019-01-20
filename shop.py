@@ -76,14 +76,14 @@ while True:
 		continue	
 	flag = find_goods(flag)
 	if flag != 'null':
-			num = int(input('输入数量'))	
-			nowTotal = int(list(flag.values())[0])*num;
-			if money > nowTotal:
-				money = money - nowTotal;
-				total = total+ nowTotal;
-				goods_list[list(flag.keys())[0]] += num;
-				print('%s*%s>>%s元添加成功'%(list(flag.keys())[0],num,nowTotal))
-				print('当前余额%s'%money)
-			else:
-				print('资金不够')
-				print('当前余额%s'%money)
+		num = int(input('输入数量'))	
+		nowTotal = int(list(flag.values())[0])*num;
+		if money > nowTotal:
+			money = money - nowTotal;
+			total = total+ nowTotal;
+			goods_list[list(flag.keys())[0]] += num;
+			print('%s*%s>>%s元添加成功'%(list(flag.keys())[0],num,nowTotal))
+			print('当前余额%s'%money)
+		else:
+			print('资金不够')
+			print('当前余额%s'%money)
