@@ -70,7 +70,7 @@ def add_limit():
 
 def return_money():
     money = input('输入取出还钱金钱')
-    if money <= user[current_user['user']]['limit']:
+    if int(money) <= user[current_user['user']]['limit']:
         common.add_money(user, current_user['user'], int(money))
     else:
         print('金额大于还款金额')
@@ -81,15 +81,16 @@ def return_money():
 @auth
 def run():
     global user
-    print('''
-1.购物
-2.查看余额
-3.还款
-4.提额
-5.取钱
-6.退出
-    ''')
+
     while True:
+        print('''
+        1.购物
+        2.查看余额
+        3.还款
+        4.提额
+        5.取钱
+        6.退出
+            ''')
         choice = input('>>: ').strip()
         if not choice:continue
         if choice == '1':
@@ -103,6 +104,7 @@ def run():
         if choice == '5':
             draw_money()
         if choice == '6':
+            logger.info(list(current_goods))
             common.fs_db(user)
             exit()
 

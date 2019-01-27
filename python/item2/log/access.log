@@ -23,3 +23,7 @@
 [2019-01-28 01:10:02,252][MainThread:4564022720][task_id:python.item2.core.src][src.py:28][INFO][登录成功]
 [2019-01-28 01:10:09,052][MainThread:4564022720][task_id:python.item2.core.src][src.py:54][INFO][购买成功]
 [2019-01-28 01:10:13,941][MainThread:4564022720][task_id:python.item2.core.src][src.py:54][INFO][购买成功]
+[2019-01-28 01:26:47,485][MainThread:4370122176][task_id:python.item2.core.src][src.py:28][INFO][登录成功]
+[2019-01-28 01:26:59,533][MainThread:4370122176][task_id:python.item2.core.src][src.py:54][INFO][购买成功]
+[2019-01-28 01:27:07,799][MainThread:4370122176][task_id:python.item2.core.src][src.py:54][INFO][购买成功]
+[2019-01-28 01:27:48,958][MainThread:4370122176][task_id:python.item2.core.src][src.py:59][INFO][余额1000]
