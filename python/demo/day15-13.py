@@ -86,3 +86,5 @@ master2 = Master('master2', pet2)
 master3 = Master('master3', pet3)
 
 master1.feed()
+master2.feed()
+master3.feed()
