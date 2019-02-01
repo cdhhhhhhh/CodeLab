@@ -1,5 +1,5 @@
-class Interger():
-    def __init__(self,number):
+class Interger:
+    def __init__(self, number):
         self.number = number
 
     def input(self):
@@ -10,6 +10,7 @@ class Interger():
             self.number = input('输入')
             self.input()
         if not self.VerifySlopOver(self.number):
+
             raise SlopOverError('ErrorMsg', str(self.number) + '-越界')
 
     def VerifySlopOver(self, number):
@@ -25,4 +26,4 @@ class SlopOverError(BaseException):
         return '<'+self.message+str(self.number)+'>'
 
 
-Interger([1,2,3]).input()
+Interger([1, 2, 3]).input()
