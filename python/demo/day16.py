@@ -15,14 +15,12 @@ class CarMate(type):
 
 class Car(object, metaclass=CarMate):
 
-    def __init__(self, date, number, capacity):
+    def __init__(self, date, number):
         self.date = date
         self.number = number
-        self.capacity = capacity
 
     def info(self):
         print(self.date, self.capacity, self.number)
 
-bus = Car( 1023, 20, 30)
+bus = Car( 1023, 20)
 
-bus.info()
