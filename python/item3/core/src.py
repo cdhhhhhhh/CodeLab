@@ -1,4 +1,5 @@
 from python.item3.lib import common
+
 current_state = {}
 logger = common.get_logger(__name__)
 db_text = common.con_db()
@@ -29,7 +30,7 @@ print_text = {
 print(db_text)
 
 
-#common.fs_db(db_text)
+
 while True:
     select_view = input('选择登录身份')
 
@@ -40,7 +41,11 @@ while True:
         if number == '2':
             common.register('student')
     if select_view == '老师':
-        common.select('teacher', common.handle)
+        common.login('teacher')
 
     if select_view == '管理':
-        common.login('manage')
+        number = input('1.登录 2.注册')
+        if number == '1':
+            common.login('manage')
+        if number == '2':
+            common.register('manage')

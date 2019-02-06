@@ -28,5 +28,6 @@ class Student:
     def print_grape(cls, db, name):
         for i in db['student']:
             if i['name'] == name:
+                print(i['course'] + '科目')
                 print(i['grade'] + '成绩')
 
