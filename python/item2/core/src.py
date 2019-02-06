@@ -10,6 +10,8 @@ count = 0
 goods={'mac': 100, 'apple': 10}
 current_goods={'mac': 0, 'apple': 0}
 user = common.conn_db()
+
+
 def auth(func):
     def wrapper(*args,**kwargs):
         while True:
