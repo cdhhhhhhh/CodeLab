@@ -14,10 +14,14 @@ def get_logger(name):
     return logger
 
 
+logger = get_logger(__name__)
+
+
 def con_db():
     db_path = setting.DB_PATH
     with open(db_path, 'rb') as f:
         dic = pickle.loads(f.read())
+        logger.info('数据库读取成功')
     return dic
 
 
@@ -25,7 +29,7 @@ def fs_db(file):
     db_path = setting.DB_PATH
     with open(db_path, 'wb') as f:
         f.write(pickle.dumps(file))
-
+    logger.info('数据库写入成功')
 
 def select(state, fn):
     flag = True
@@ -47,6 +51,7 @@ def login(state):
 
         if src.db_text[state]['user'][name] == password:
             src.current_state['name'] = name
+            logger.info('登录成功'+name)
             select('manage', handle)
         else:
             print('登录失败')
@@ -54,6 +59,7 @@ def login(state):
     elif state == 'teacher':
         if name in [i[0] for i in src.db_text['teacher']]:
             src.current_state['name'] = name
+            logger.info('登录成功'+name)
             select('teacher', handle)
         else:
             print('登录失败')
@@ -61,6 +67,8 @@ def login(state):
         password = input('输入密码')
         if [name, password] in list([i['name'], i['password']] for i in src.db_text[state]):
             src.current_state['name'] = name
+            logger.info('登录成功'+name)
+
             select('student', handle)
         else:
             print('登录失败')
@@ -85,12 +93,14 @@ def register(state):
             {'name': name, 'password': password, 'school': school, 'grade': grade, 'course': course[0]['course'],
              'score': 0})
         print('注册成功')
+        logger.info('注册成功')
         src.current_state['name'] = name
     elif name == 'manage':
         name = input('输入用户名')
         password = input('输入密码')
         src.db_text['manage']['user'][name] = password
-        print('组成成功')
+        logger.info('注册成功')
+        print('注册成功')
         src.current_state['name'] = name
     select(state, handle)
 
