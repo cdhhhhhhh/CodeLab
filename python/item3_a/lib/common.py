@@ -49,7 +49,7 @@ def login(state):
     if state == 'manage':
         password = input('输入密码')
 
-        if src.db_text[state]['user'][name] == password:
+        if src.db_text[state]['manage'][name] == password:
             src.current_state['name'] = name
             logger.info('登录成功'+name)
             select('manage', handle)
@@ -98,7 +98,7 @@ def register(state):
     elif name == 'manage':
         name = input('输入用户名')
         password = input('输入密码')
-        src.db_text['manage']['user'][name] = password
+        src.db_text['manage']['manage'][name] = password
         logger.info('注册成功')
         print('注册成功')
         src.current_state['name'] = name

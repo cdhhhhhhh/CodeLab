@@ -4,7 +4,7 @@ import time
 
 logger=common.get_logger(__name__)
 
-current_user={'user':None,'login_time':None,'timeout':int(settings.LOGIN_TIMEOUT)}
+current_user={'manage':None,'login_time':None,'timeout':int(settings.LOGIN_TIMEOUT)}
 
 count = 0
 goods={'mac': 100, 'apple': 10}
@@ -19,7 +19,7 @@ def auth(func):
             if count == 3:
                 logger.error('登入次数上限')
                 exit()
-            if current_user['user']:
+            if current_user['manage']:
                 interval = time.time() - current_user['login_time']
                 if interval < current_user['timeout']:
                     return func(*args, **kwargs)
@@ -28,7 +28,7 @@ def auth(func):
             if user.get(name):
                 if password == user.get(name).get('password'):
                     logger.info('登录成功')
-                    current_user['user'] = name
+                    current_user['manage'] = name
                     current_user['login_time'] = time.time()
                     return func(*args, **kwargs)
                 else:
@@ -52,28 +52,28 @@ def buy():
             return
         if key in goods:
             count = input('输入数量')
-            if common.consume_goods(user,current_user['user'],int(count)*goods[key]):
+            if common.consume_goods(user,current_user['manage'],int(count)*goods[key]):
                 logger.info('购买成功')
                 current_goods[key]+=int(count)
 
 
 def check_money():
-    logger.info('余额%s'%user[current_user['user']]['money'])
+    logger.info('余额%s'%user[current_user['manage']]['money'])
 def draw_money():
     money = input('输入取出金额')
-    common.consume_goods(user, current_user['user'], int(money))
-    logger.info('余额%s'%user[current_user['user']]['money'])
+    common.consume_goods(user, current_user['manage'], int(money))
+    logger.info('余额%s'%user[current_user['manage']]['money'])
 
 
 def add_limit():
     money = input('输入提额金钱')
-    common.add_limit(user, current_user['user'], int(money))
-    logger.info('额度%s'%user[current_user['user']]['limit'])
+    common.add_limit(user, current_user['manage'], int(money))
+    logger.info('额度%s'%user[current_user['manage']]['limit'])
 
 def return_money():
     money = input('输入取出还钱金钱')
-    if int(money) <= user[current_user['user']]['limit']:
-        common.add_money(user, current_user['user'], int(money))
+    if int(money) <= user[current_user['manage']]['limit']:
+        common.add_money(user, current_user['manage'], int(money))
     else:
         print('金额大于还款金额')
 

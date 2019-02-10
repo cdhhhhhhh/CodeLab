@@ -31,7 +31,7 @@ print(db_text)
 db_text = {'student': [
     {'name': 'stu1', 'password': 'stu1', 'school': 'shanghai', 'grade': 'class1', 'course': 'AI', 'score': 0}],
            'teacher': [['toto', 'shanghai'], ['kula', 'shanghai'], ['roti', 'NewYork'], ['yure', 'NewYork']],
-           'manage': {'user': {'admin': 'admin'}, 'infos': {'school': [{'shanghai': {
+           'manage': {'manage': {'admin': 'admin'}, 'infos': {'school': [{'shanghai': {
                'class1': {'course': 'AI', 'teacher': ''}, 'class2': {'course': 'Python', 'teacher': 'toto'}}}],
                                                             'course': [['AI', '40000', '4'], ['Python', '6000', '6'],
                                                                        ['ML', '9000', '8']]}}}
