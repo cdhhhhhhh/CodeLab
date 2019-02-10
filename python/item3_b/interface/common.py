@@ -1,6 +1,14 @@
-from python.item3_b.interface import db
-from python.item3_b.interface import manager, student, school
+from python.item3_b.interface import manager, student, db
 from python.item3_b.lib.School import *
+from python.item3_b.conf import setting
+import logging
+import logging.config
+
+
+def get_logger(name):
+    logging.config.dictConfig(setting.LOGGING_DIC)
+    logger = logging.getLogger(name)
+    return logger
 
 
 def login(status):
@@ -19,6 +27,7 @@ def login(status):
             print('密码错误')
             count += 1
             continue
+        setting.CURRENT_USERNAME = name
         break
 
 
@@ -29,9 +38,12 @@ def register(status):
         if name not in user_list:
             password = input('请输入密码')
             if status == 'manager':
+                setting.CURRENT_USERNAME = name
                 manager.register_interface(name, password)
             else:
-                pass
+                setting.CURRENT_USERNAME = name
+                student.register_interface(name, password)
+                break
         else:
             print('用户名已存在')
 

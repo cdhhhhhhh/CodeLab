@@ -1,5 +1,6 @@
 from python.item3_b.interface import common
 from python.item3_b.interface import school
+from python.item3_b.conf import setting
 
 select_list = [school.add_school,
                school.add_course,
@@ -29,6 +30,7 @@ def run():
         ''')
         number = input('请选择:')
         if number == 'q':
+            setting.CURRENT_USERNAME = ''
             break
         if int(number) < 3:
             select_list[int(number)]()
