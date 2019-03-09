@@ -1,7 +1,7 @@
 import socket
 import json
 import time
-from python.item4_qq.server import lib
+from python.item4_qq.server.lib import lib
 
 server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 server.bind(('127.0.0.1', 8083))
@@ -45,12 +45,14 @@ def run():
                 encoding='utf-8'), server_addr)
 
         if server_data_json['type'] == 'send_person_msg':
+            #初始化队列
             if server_data_json['msg']['chat_target'] not in msg_person_queue.keys():
                 msg_person_queue[server_data_json['msg']['chat_target']] = {}
             if server_data_json['msg']['current_username'] not in msg_person_queue[
                 server_data_json['msg']['chat_target']].keys():
                 msg_person_queue[server_data_json['msg']['chat_target']][
                     server_data_json['msg']['current_username']] = {}
+            #推送队列
             msg_person_queue[server_data_json['msg']['chat_target']][server_data_json['msg']['current_username']][
                 localtime] = \
                 server_data_json['msg']['msg']

@@ -1,5 +1,5 @@
 import socket
-from python.item4_qq.clinet import chat
+from python.item4_qq.clinet.core import chat
 import json
 
 current_username = ''

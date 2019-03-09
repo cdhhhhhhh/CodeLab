@@ -1,4 +1,4 @@
-from python.item4_qq.clinet import lib
+from python.item4_qq.clinet.lib import lib
 
 
 def run():
