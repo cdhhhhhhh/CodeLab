@@ -1,4 +1,5 @@
 from lib import common
+from lib import vip
 
 current_name = ''
 
@@ -30,12 +31,19 @@ def register():
 
 
 def member():
+    fun_dic = {
+        '1': vip.add_vip,
+        '2': vip.renew_vip,
+        '3': vip.check_vip_date
+    }
     while True:
         flg = input('''
         1.办理会员
         2.续费
         3.查看到期时间
         ''')
+        if flg in fun_dic.keys():
+            fun_dic[flg](current_name)
 
 
 def download():
@@ -52,17 +60,16 @@ def logout():
     print('退出成功！')
 
 
-fun_dic = {
-    '1': login,
-    '2': register,
-    '3': upload,
-    '4': download,
-    '5': member,
-    '6': logout
-}
-
-
 def run():
+    fun_dic = {
+        '1': login,
+        '2': register,
+        '3': upload,
+        '4': download,
+        '5': member,
+        '6': logout
+    }
+
     while True:
         print('''
                  1 登录

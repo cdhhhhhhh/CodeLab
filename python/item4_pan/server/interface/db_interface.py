@@ -14,13 +14,12 @@ def creat_server_interface():
 
 def add_user():
     msg = db_server.msg
-    print(msg)
     all_user = handler.read_user()
     if handler.mkdir(msg['username']):
         all_user[msg['username']] = {
             'password': msg['password'],
             'file': [],
-            'vip': ''
+            'vip_date': ''
         }
         handler.write_user(all_user)
         db_server.send_msg({'type': '1', 'msg': 'register suss'}, '')
@@ -28,16 +27,25 @@ def add_user():
         db_server.send_msg({'type': '0', 'msg': 'register fail'}, '')
 
 
-def check_user():
+def user_info():
     msg = db_server.msg
     all_user = handler.read_user()
-    if msg['username'] in all_user.keys():
-        if msg['password'] == all_user[msg['username']]['password']:
-            db_server.send_msg({'type': '1', 'msg': 'login suss'}, '')
-        else:
-            db_server.send_msg({'type': '0', 'msg': 'password fail'}, '')
-    else:
-        db_server.send_msg({'type': '0', 'msg': 'not username '}, '')
+    print(msg)
+
+    db_server.send_msg({'type': '1', 'msg': all_user[msg['username']]}, '')
+
+
+def user_list():
+    all_user = handler.read_user()
+    db_server.send_msg({'type': '1', 'msg': all_user}, '')
+
+
+def modify_user_vip():
+    msg = db_server.msg
+    all_user = handler.read_user()
+    all_user[msg['username']]['vip_date'] = msg['vip_date']
+    handler.write_user(all_user)
+    db_server.send_msg({'type': '1', 'msg': 'add vip date'}, '')
 
 
 def upload_file():
