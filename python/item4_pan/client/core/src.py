@@ -1,22 +1,23 @@
 from lib import common
 from lib import vip
+from lib import manger_ftp
 
-current_name = ''
+current_info = {'username': ''}
 
 
-def login():
-    global current_name
+def login_view():
+    global current_info
     username = input('输入用户名')
     password = input('输入密码')
     rev_msg = common.login(username, password)
     if rev_msg['type'] == '1':
-        current_name = username
+        current_info['username'] = username
         print('登陆成功')
     else:
         print(rev_msg['msg'])
 
 
-def register():
+def register_view():
     username = input('输入用户名')
     password = input('输入密码')
     conf_password = input('确认密码')
@@ -30,7 +31,8 @@ def register():
         print('密码不一致')
 
 
-def member():
+@common.login_auth(current_info)
+def member_view():
     fun_dic = {
         '1': vip.add_vip,
         '2': vip.renew_vip,
@@ -43,31 +45,42 @@ def member():
         3.查看到期时间
         ''')
         if flg in fun_dic.keys():
-            fun_dic[flg](current_name)
+            fun_dic[flg](current_info['username'])
+        else:
+            return
 
 
-def download():
-    pass
+@common.login_auth(current_info)
+def download_view():
+    manger_ftp.download_file(current_info['username'])
 
 
-def upload():
-    pass
+@common.login_auth(current_info)
+def upload_view():
+    manger_ftp.upload_file(current_info['username'])
 
 
+@common.login_auth(current_info)
+def check_file():
+    common.check_file_list(current_info['username'])
+
+
+@common.login_auth(current_info)
 def logout():
-    global current_name
-    current_name = ''
+    global current_info
+    current_info['username'] = ''
     print('退出成功！')
 
 
 def run():
     fun_dic = {
-        '1': login,
-        '2': register,
-        '3': upload,
-        '4': download,
-        '5': member,
-        '6': logout
+        '1': login_view,
+        '2': register_view,
+        '3': upload_view,
+        '4': download_view,
+        '5': check_file,
+        '6': member_view,
+        '7': logout
     }
 
     while True:
@@ -76,8 +89,9 @@ def run():
                  2 注册
                  3 上传
                  4 下载
-                 5 会员
-                 6 注销
+                 5 文件  
+                 6 会员
+                 7 注销
                  ''')
         choice = input('输入选择')
         if choice in fun_dic.keys():

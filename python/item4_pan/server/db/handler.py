@@ -24,9 +24,3 @@ def read_user():
         return json.loads(f.read())
 
 
-def check_dir_file():
-    pass
-
-
-if __name__ == '__main__':
-    pass
