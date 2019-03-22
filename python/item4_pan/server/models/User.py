@@ -2,7 +2,7 @@ from lib import common
 
 
 class User:
-    def __init__(self, vip_date, file_list):
+    def __init__(self, vip_date=None, file_list=None):
         self.username = ''
         self.password = ''
         self.user_list = {}

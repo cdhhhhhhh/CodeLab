@@ -44,7 +44,7 @@ def add_vip_interface():
     client_addr = main_server.server_addr
     client_msg = main_server.msg
     common.send_db(main_server, 'user_info', main_server.msg)
-    user_obj = User()
+    user_obj = User(main_server.msg['vip_date'])
     if main_server.msg['vip_date'] == '':
         user_obj.add_vip_date(main_server, client_msg)
         main_server.send_msg({'type': '1', 'msg': 'add vip suss'}, client_addr)
@@ -56,7 +56,7 @@ def renew_vip_interface():
     client_addr = main_server.server_addr
     client_msg = main_server.msg
     common.send_db(main_server, 'user_info', main_server.msg)
-    user_obj = User()
+    user_obj = User(main_server.msg['vip_date'])
     if main_server.msg['vip_date'] != '':
         client_msg['vip_date'] = str(int(client_msg['vip_date']) + int(main_server.msg['vip_date']))
         user_obj.add_vip_date(main_server, client_msg)

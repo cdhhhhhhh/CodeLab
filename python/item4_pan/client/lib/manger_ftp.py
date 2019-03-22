@@ -60,10 +60,9 @@ def upload_file(username):
 def download_file(username):
     file_name = input('输入下载文件名')
     recv_data = common.send_msg({'type': 'download_file', 'msg': {'username': username, 'file_name': file_name}})
-    print(recv_data)
-    upload_speed = recv_data['msg']['speed']
-    file_size = recv_data['msg']['file_size']
     if recv_data['type'] == '1':
+        upload_speed = recv_data['msg']['speed']
+        file_size = recv_data['msg']['file_size']
         if recv_data['msg']['has_vip'] == '1':
             print('正在启动会员加速中')
         else:
