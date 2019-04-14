@@ -1,17 +1,16 @@
-from multiprocessing import Process, Queue
+from multiprocessing import Process
 from socket import *
 import random
-
 
 def deal_client(conn, addr):
     captha = random.randint(1000, 9999)
     print(addr)
-    conn.send(bytes(str(captha)))
+    conn.send(bytes(str(captha), encoding='utf8'))
     data = conn.recv(1024)
-    if str(data) == str(captha):
-        conn.send('fail')
+    if bytes.decode(data) == str(captha):
+        conn.send(b'suss')
     else:
-        conn.send('suss')
+        conn.send(b'fail')
     conn.close()
 
 
