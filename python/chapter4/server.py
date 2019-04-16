@@ -2,6 +2,7 @@ from multiprocessing import Process
 from socket import *
 import random
 
+
 def deal_client(conn, addr):
     captha = random.randint(1000, 9999)
     print(addr)
