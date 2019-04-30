@@ -14,7 +14,6 @@ def deal_client(conn, addr):
         conn.send(b'fail')
     conn.close()
 
-
 def main():
     server = socket(AF_INET, SOCK_STREAM)
     server.bind(('127.0.0.1', 8089))
