@@ -12,6 +12,7 @@ def get_list(data):
     reg_link = 'https://www\.cnblogs\.com/([\S\s]*?)/p/([\S\s]*?)\.html'
     article_list = re.findall(reg_article, r.text, flags=0)
     article_list = [re.search(reg_link, i[0]).group() for i in article_list if re.match('(Python|python)', i[1])]
+    print(article_list)
     return article_list
 
 
