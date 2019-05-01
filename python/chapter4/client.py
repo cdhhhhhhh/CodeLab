@@ -4,7 +4,7 @@ from multiprocessing import Process
 
 def register(i):
     client = socket(AF_INET, SOCK_STREAM)
-    client.connect(('127.0.0.1', 8089))
+    client.connect(('127.0.0.1', 8095))
     chapter = client.recv(1024)
     print('验证码' + bytes.decode(chapter))
     client.send(chapter)

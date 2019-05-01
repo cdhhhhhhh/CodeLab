@@ -1,13 +1,15 @@
 from socket import *
-from threading import Thread
-
-
-def con_serve():
-    client = socket(AF_INET, SOCK_STREAM)
-    client.connect(('127.0.0.1', 8089))
-    while
+import time
 
 if __name__ == '__main__':
-    for i in range(10):
-        c = Thread(target=con_serve)
-        c.start()
+    client = socket(AF_INET, SOCK_STREAM)
+    client.connect(('127.0.0.1', 8089))
+    while True:
+        client.send(b'connect')
+        data = client.recv(1024)
+        time.sleep(1)
+        print(data)
+        if data == b'connect fail' or data == b'connect suss':
+            client.close()
+            break
+    client.close()

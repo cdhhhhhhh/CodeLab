@@ -14,20 +14,29 @@ def check():
 def connect(conn, addr):
     num = 0
     print(addr)
-    while event.is_set() and num < 4:
-        conn.send(b'connect fail')
+    while not event.is_set():
         num = num + 1
+        conn.recv(1024)
+        if num > 3:
+            conn.send(b'connect fail')
+            conn.close()
+            return
+        conn.send(b'connect again')
     conn.send(b'connect suss')
+    conn.close()
 
 
-if __name__ == '__main__':
-    c1 = Thread(target=check)
-    c1.start()
+def main():
     server = socket(AF_INET, SOCK_STREAM)
     server.bind(('127.0.0.1', 8089))
     server.listen(5)
     while True:
         conn, addr = server.accept()
-        client = Thread(target=connect, args=(conn, addr))
-        client.start()
-        conn.close()
+        s = Thread(target=connect, args=(conn, addr))
+        s.start()
+
+
+if __name__ == '__main__':
+    c1 = Thread(target=check)
+    c1.start()
+    main()
