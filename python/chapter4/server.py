@@ -24,7 +24,6 @@ def main():
         conn, addr = server.accept()
         client = Process(target=deal_client, args=(conn, addr))
         client.start()
-        conn.close()
 
 
 if __name__ == '__main__':
