@@ -8,7 +8,7 @@ const Url = require('url')
 const mysql = require('mysql')
 const socket = require('socket.io')
 const uid = require('uuid/v4')
-const  zlib = require('zlib')
+const zlib = require('zlib')
 const db = mysql.createConnection({
     host: 'localhost',
     port: 3306,
@@ -103,14 +103,11 @@ http.createServer((req, res) => {
                 }
                 break;
             default:
-
                 let rs = fs.createReadStream(`./www${pathname}`);
                 let gz = zlib.createGzip()
-                console.log(`./www${pathname}`)
-                res.setHeader('content-encoding','gzip')
+                res.setHeader('content-encoding', 'gzip')
                 rs.pipe(gz).pipe(res)
                 rs.on('error', function (err) {
-                    console.log(err)
                     res.writeHead(404)
                     res.end('404 Not Find')
                 });
@@ -118,7 +115,17 @@ http.createServer((req, res) => {
 
 
     } else if (req.method === 'POST') {
+        let arr = ''
+        req.on('data', function (data) {
+            arr += data;
+        })
+        req.on('end', function () {
+            //querystring.encode(arr)  用于
+            res.setHeader('Access-Control-Allow-Origin','*')
 
+
+            res.end()
+        })
     }
 
 

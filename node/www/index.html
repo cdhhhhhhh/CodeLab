@@ -4,19 +4,97 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    .file_area{
+        margin-top: 100px;
+        background: darkgrey;
+        width: 400px;
+        height: 100px;
+        text-align: center;
+    }
+</style>
+<!--<script src="http://localhost:8088/socket.io/socket.io.js"></script>-->
 <body>
-index
-<form action="http://localhost:8081" method="post" enctype="multipart/form-data">
+<form action="http://localhost:8082" method="post" enctype="multipart/form-data">
     <label>
         <input type="text" name="username">
     </label>
     <label>
         <input type="text" name="password">
     </label>
-<!--    <label>-->
-<!--        <input type="file" name="file" >-->
-<!--    </label>-->
+        <label>
+            <input type="file" name="file" >
+        </label>
     <input type="submit">
 </form>
+<div class="file_area">
+请拖动文字
+</div>
 </body>
+<script>
+window.onload = function () {
+    // let test_data = new FormData()
+    // test_data.set('a','b')
+    // test_data.append('a','c')
+    // test_data.append('a','c')
+    //
+    // let  xhr = new XMLHttpRequest()
+    // xhr.open('POST', 'http://localhost:8082/')
+    // xhr.onreadystatechange = function(){
+    //     if (xhr.readyState===4){
+    //         if (xhr.status<300&&xhr.status>=200||xhr.status===304){
+    //             console.log('success')
+    //         } else {
+    //             console.log('err')
+    //         }
+    //     }
+    // }
+    // xhr.send(test_data)
+    //
+
+
+    document.addEventListener('progress',function (e) {
+        console.log(e)
+    },false)
+
+
+
+    let file_area = document.querySelector('.file_area')
+    file_area.ondragenter = function () {
+        file_area.innerHTML = '松手'
+        return false
+    }
+    file_area.ondragleave = function () {
+        file_area.innerHTML = '请移入'
+        return false
+    }
+    file_area.ondragover=function () {
+        console.log('进入中')
+        return false
+    }
+    file_area.ondrop = function (e) {
+        let data = new FormData()
+        Array.from(e.dataTransfer.files).forEach((file,index)=>{
+            console.log(file,index)
+            data.set(`num${index}`,file)
+        })
+        let  xhr = new XMLHttpRequest()
+        xhr.open('POST', 'http://localhost:8082/')
+
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState===4){
+                if (xhr.status<300&&xhr.status>=200||xhr.status===304){
+                    console.log('success')
+                } else {
+                    console.log('err')
+                }
+            }
+        }
+
+        xhr.send(data)
+        return false
+    }
+
+}
+</script>
 </html>

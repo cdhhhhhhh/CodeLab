@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function ajax(url, data, method, headerName, headerValue, success, err) {
+        let xhr = new XMLHttpRequest();
+        xhr.setRequestHeader(headerName, headerValue);
+
+        if (method === 'post') {
+            xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+            xhr.open(method, url);
+            xhr.send(data);
+        } else {
+            xhr.open(method, url);
+            xhr.send();
+        }
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr < 300 || xhr.status === 304) {
+                    success && success(xhr.body);
+                } else {
+                    err && err(xhr.body);
+                }
+            }
+        }
+    }
+
+</script>
+</html>
