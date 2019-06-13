@@ -11,10 +11,10 @@
 
     function ajax(url, data, method, headerName, headerValue, success, err) {
         let xhr = new XMLHttpRequest();
-        xhr.setRequestHeader(headerName, headerValue);
+        // xhr.setRequestHeader(headerName, headerValue);
 
         if (method === 'post') {
-            xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+            // xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
             xhr.open(method, url);
             xhr.send(data);
         } else {

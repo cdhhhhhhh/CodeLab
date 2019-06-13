@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <script src="libs/hammer.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .list li {
+            height: 30px;
+            border-bottom: 1px solid black;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s all ease;
+        }
+
+        .list li > span {
+            background: red;
+            width: 0;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 30px;
+            overflow: hidden;
+        }
+
+        .list a {
+            color: white;
+            text-decoration: none;
+            width: 100px;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div class="list">
+    <ul>
+    </ul>
+</div>
+</body>
+<script>
+    const testList = [
+        'namenamenamenamen',
+        'namenamenamenamen',
+        'namenamenamenamen',
+        'namenamenamenamen'
+    ]
+    let delw,delstartw;
+    let smsUl = document.querySelector('.list ul')
+    testList.forEach(item => {
+        let oLi = document.createElement('li')
+        oLi.innerHTML = `<small>${item}</small> <span><a href="javascript:"> <span>删除</span></a></span>`
+        smsUl.appendChild(oLi)
+        let hammer = new Hammer(oLi)
+
+        hammer.on('panmove', function (ev) {
+
+            Array.from(document.querySelectorAll('ul li>span')).forEach(function (item) {
+                item.style.width = '0px'
+            })
+            delw = Math.abs(delstartw-ev.center.x)
+            console.log(delw)
+
+            if (delw<80){
+                oLi.getElementsByTagName('span')[0].style.width = delw + 'px'
+
+            } else {
+                oLi.getElementsByTagName('span')[0].style.width = 80+(delw-80)/6 + 'px'
+
+            }
+        })
+
+        // hammer.on('swiperight',function () {
+        //     oLi.getElementsByTagName('span')[0].style.width = 0+'px';
+        // })
+
+        oLi.addEventListener('touchstart',function (ev) {
+            delstartw = ev.targetTouches[0].clientX
+        })
+
+        oLi.addEventListener('touchend',function () {
+            delbtn.style.transition='0.3s all ease'
+            if (delw>60){
+                delw = 100
+                oLi.getElementsByTagName('span')[0].style.width = 100 + 'px'
+            } else {
+                delw = 0
+                oLi.getElementsByTagName('span')[0].style.width = 0 + 'px'
+            }
+        })
+        let delbtn = oLi.getElementsByTagName('span')[0]
+        delbtn.addEventListener('click',function (ev) {
+            delbtn.style.width = '0px'
+            // ev.cancelBubble=true;
+
+
+            delbtn.addEventListener('transitionend',function () {
+                oLi.style.height = '0px'
+                // oLi.style.borderBottom='0px solid black';
+                ev.cancelBubble=true;
+
+                oLi.addEventListener('transitionend',function () {
+                    smsUl.removeChild(oLi)
+                })
+
+            },false)
+        },false)
+    })
+
+
+</script>
+</html>

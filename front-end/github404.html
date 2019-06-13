@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    div {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+    }
+</style>
+<script>
+
+window.onload = function () {
+    let aDiv=document.getElementsByTagName("div");
+    let oldPos=Array.from(aDiv).map(div=>{
+        return {
+            left: div.offsetLeft,
+            top: div.offsetTop
+        };
+    });
+    document.addEventListener('mousemove',function (ev) {
+        Array.from(aDiv).forEach(function (item,index) {
+            item.style.top = oldPos[index].top + ev.clientY/50*item.style.zIndex+'px';
+            item.style.left = oldPos[index].left + ev.clientX/50*item.style.zIndex+'px';
+        })
+    })
+}
+
+</script>
+<body>
+    <div style="left:100px; top:100px; background:green; z-index:1"></div>
+    <div style="left:350px; top:150px; background:yellow; z-index:2"></div>
+    <div style="left:50px; top:320px; background:#CCC; z-index:3"></div>
+    <div style="left:450px; top:200px; background:pink; z-index:4"></div>
+</body>
+</html>

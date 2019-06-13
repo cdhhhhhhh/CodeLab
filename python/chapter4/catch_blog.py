@@ -17,14 +17,18 @@ def get_list(data):
 
 
 if __name__ == '__main__':
+
     p = ThreadPoolExecutor()
     p_list = []
     link_list = []
+
     for i in range(0, 10):
         obj = p.submit(get_list, data_list[i])
         p_list.append(obj)
+
     for i in range(0, 10):
         link_list.append(p_list[i].result())
+
     with open('./linklist', 'w') as fs:
         link_list = [i for i in link_list if i != []]
         fs.write(str(link_list))

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html{
+        text-align: center;
+        background: black;
+    }
+    canvas{
+        background: white;
+    }
+</style>
+<body>
+<canvas id="c1" width="800" height="600"></canvas>
+</body>
+<script>
+window.onload = function () {
+    let oC=document.getElementById('c1');
+    let gd=oC.getContext('2d');
+    gd.rotate(30*Math.PI/180)
+    gd.strokeRect(100,100,200,100)
+    gd.fillStyle = 'rgba(255,0,0,0.3)'
+    gd.fillRect(0,0,oC.width,oC.height)
+}
+</script>
+</html>

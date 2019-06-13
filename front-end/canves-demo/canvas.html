@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html{
+        text-align: center;
+        background: black;
+    }
+    #canvas{
+        background: #FFF;
+    }
+</style>
+<body>
+<canvas id="canvas" width="800" height="600" ></canvas>
+</body>
+<script>
+let oC = document.getElementById('canvas')
+    let gd = oC.getContext('2d')
+    //画线
+    gd.moveTo(100,100)
+    gd.lineTo(200,200)
+    gd.strokeStyle = 'red'
+    gd.stroke()
+    //从新找位置画线
+    gd.beginPath()
+    gd.moveTo(300,100)
+    gd.lineTo(400,200)
+    gd.strokeStyle = 'yellow'
+    gd.lineWidth = 20
+    gd.stroke()
+
+    //画矩形
+    gd.beginPath()
+    gd.rect(200,200,200,100)
+    gd.fill()
+
+    gd.beginPath()
+    gd.strokeRect(300,300,100,100)
+    gd.fill()
+
+    //清除画板
+    gd.clearRect(0,0,oC.width,oC.height)
+    let left = 100;
+    let a = setInterval(function () {
+        gd.clearRect(0,0,oC.width,oC.height)
+        gd.strokeRect(left,100,100,100)
+        gd.strokeWidth = 100
+        left++
+    },16)
+    clearInterval(a)
+
+    requestAnimationFrame(next)
+    function next() {
+        gd.clearRect(0,0,oC.width,oC.height)
+        gd.strokeRect(left,100,100,100)
+        gd.strokeWidth = 100
+        left++
+        requestAnimationFrame(next)
+    }
+
+</script>
+</html>

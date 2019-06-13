@@ -86,6 +86,7 @@
     window.onresize = function () {
         document.documentElement.style.fontSize=document.documentElement.clientWidth/48+'px';
     }
+
  window.onload = function () {
      let oBanner = document.querySelector('.banner')
      let oBannerUl = oBanner.children[0]
@@ -126,8 +127,6 @@
                      y = ev.targetTouches[0].clientY-disY
                  }
                  oBannerUl.style.transform = `translateX(${x}px)`
-
-
                  if (y>0){
                      oPageContent.style.transform = `translateY(${y/3}px)`
                      if (y>200){
@@ -142,7 +141,6 @@
              }
          }
          function fnEnd(){
-
              oBanner.removeEventListener('touchmove', fnMove, false);
              oBanner.removeEventListener('touchend', fnEnd, false);
              if(y>0){
@@ -166,7 +164,6 @@
          }
          oBanner.addEventListener('touchmove', fnMove, false);
          oBanner.addEventListener('touchend', fnEnd, false);
-
      })
  }
 

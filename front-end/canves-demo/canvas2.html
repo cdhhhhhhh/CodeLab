@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html{
+        text-align: center;
+        background: black;
+    }
+    #canvas{
+        background: white;
+    }
+</style>
+<body>
+<canvas id="canvas" width="800" height="600"></canvas>
+</body>
+<script>
+    let oC = document.getElementById('canvas')
+    let gd = oC.getContext('2d')
+
+    gd.strokeRect(100,100,200,150);
+
+    oC.addEventListener('mousemove',function (ev) {
+        gd.clearRect(0,0,oC.width,oC.height)
+        console.log(ev)
+        let mx = ev.clientX
+        let my = ev.clientY
+        let t = 100+oC.offsetTop
+        let l = 100+oC.offsetLeft
+        let r = 300+oC.offsetLeft
+        let b = 250+oC.offsetTop
+        gd.strokeStyle = 'red'
+        if (mx>l&&mx<r&&my>t&&my<b) {
+            gd.strokeStyle = 'yellow'
+        }
+        gd.strokeRect(100,100,200,150);
+
+    })
+
+</script>
+</html>

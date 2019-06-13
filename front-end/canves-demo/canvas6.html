@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html{
+        background: black;
+        text-align: center;
+    }
+    #canvas{
+        background: white;
+    }
+</style>
+<body>
+<canvas width="800" height="600" id="canvas"></canvas>
+</body>
+<script>
+    let oC = document.getElementById('canvas')
+    let gd = oC.getContext('2d')
+    let g = [
+        {l:100,t:100,w:200,h:150,r:0},
+        {l: 50, t: 80, w: 100, h: 350, r: 0}
+        ]
+
+    gd.save()
+    gd.translate(g[0].w/2+g[0].l,g[0].h+g[0].t)
+    gd.rotate(30*Math.PI/180)
+    gd.strokeRect(-g[0].w/2,-g[0].h/2,g[0].w,g[0].h)
+
+    gd.fillStyle = 'rgb(255,0,0,0.3)'
+    gd.fillRect(0,0,oC.width,oC.height)
+
+    gd.restore()
+
+    gd.save()
+    gd.translate(g[1].w/2+g[1].l,g[1].h+g[1].t)
+    gd.rotate(30*Math.PI/180)
+    gd.strokeRect(-g[1].w/2,-g[1].h/2,g[1].w,g[1].h)
+
+    gd.fillStyle = 'rgb(0,255,0,0.3)'
+    gd.fillRect(0,0,oC.width,oC.height)
+    gd.restore()
+
+
+
+
+</script>
+</html>

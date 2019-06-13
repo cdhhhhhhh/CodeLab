@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html{
+        text-align: center;
+        background: black;
+    }
+    #canvas{
+        background: white;
+    }
+</style>
+<body>
+<canvas id="canvas" width="800" height="600"> </canvas>
+</body>
+<script>
+    //2Pi*rad=360deg
+    function d2r(n){
+        return n*Math.PI/180;
+    }
+
+
+    let oC = document.getElementById('canvas')
+    let gd = oC.getContext('2d')
+    let cx=400,cy=300,r=200;
+
+    let datas = [
+        {data:2000,color:'red'},
+        {data:300,color:'black'},
+        {data:1000,color:'yellow'}
+    ]
+    gd.font = '40px 宋体'
+    gd.strokeText('哈哈哈哈',100,100)
+    function pie(startAng,endAng,color) {
+        let x = cx+Math.cos(d2r(startAng))*r
+        let y = cy+Math.sin(d2r(startAng))*r
+        gd.beginPath()
+        gd.moveTo(cx,cy)
+        gd.lineTo(x,y)
+        gd.arc(cx,cy,r,d2r(startAng),d2r(endAng),false)
+
+        gd.closePath()
+        gd.fillStyle = color
+        gd.fill()
+
+
+    }
+
+    let sum = 0;
+    datas.forEach(function (item) {
+        sum+=item.data
+    })
+
+    let now = 0;
+
+    datas.forEach(function (item,index) {
+
+        let endAng = 360*item.data/sum
+        console.log(endAng)
+        pie(now,now+endAng,item.color)
+        now += endAng
+    })
+</script>
+</html>
