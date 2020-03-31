@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>callback</title>
+</head>
+<body>
+
+</body>
+<script>
+    (function (root) {
+        let optionsCache = {};
+        let _ = {
+            callbacks: function (options) {
+                options = typeof options === 'string' ? (optionsCache[options] || createOptions(options)) : {};
+                let list = [];
+                let index, length, testing, memory, start,starts;
+                let fire = function (data) {
+                    memory = options.memory && data;
+                    index = starts || 0;
+                    start = 0;
+                    testing = true;
+                    length = list.length;
+                    for (; index < length; index++) {
+                        if (list[index].apply(data[0], data[1]) === false && options.stopOnfalse) {
+                            break;
+                        }
+                    }
+                };
+                let self = {
+                    add: function () {
+                        let args = Array.from(arguments);
+                        start = args.length;
+                        args.forEach(function (item) {
+                            if (toString.call(item) === '[object Function]') {
+                                list.push(item);
+                            }
+                        });
+                        if (memory) {
+                            starts = start;
+                            fire(memory);
+                        }
+                    },
+                    fireWith: function (context, arguments) {
+                        let args = [context, arguments];
+                        if (!options.once || !testing) {
+                            fire(args);
+                        }
+                    },
+                    fire: function () {
+                        self.fireWith(this, arguments);
+                    }
+                };
+                return self;
+            },
+        };
+
+        function createOptions(options) {
+            let obj = optionsCache[options] = {};
+            options.split(/\s+/).forEach(function (item) {
+                obj[item] = true;
+            });
+            console.log(optionsCache);
+            return obj;
+        }
+
+        root._ = _;
+    })(window);
+    let cb = _.callbacks('once memory');
+    cb.add(function (e) {
+        console.log(e)
+    }, function (e) {
+        console.log(e)
+    });
+    cb.fire({d:1});
+    //  bug
+    // cb.add(function () {
+    //     console.log(1)
+    // }, function () {
+    //     console.log(2)
+    // });
+</script>
+</html>

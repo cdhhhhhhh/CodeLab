@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://cdn.bootcss.com/pako/1.0.10/pako.min.js"></script>
+<body>
+
+</body>
+<script>
+    function Uint8ArrayToString(fileData) {
+        var dataString = "";
+        for (var i = 0; i < fileData.length; i++) {
+            dataString += String.fromCharCode(fileData[i]);
+        }
+
+        return dataString
+    }
+
+    window.onload = function () {
+        let obj = {"sub": "topic to sub", "id": "id generate by client"}
+        let socket = new WebSocket('wss://api.huobi.pro/ws')
+        socket.addEventListener('open', function (e) {
+            socket.send(JSON.stringify(obj))
+        })
+        socket.addEventListener('message', function (e) {
+            let reader = new FileReader()
+            reader.readAsArrayBuffer(e.data)
+            reader.onload = function(){
+                let data = pako.inflate(reader.result)
+                strData = JSON.parse(String.fromCharCode.apply(null, new Uint16Array(data))) //转化成JSON字符串
+                let ping = strData.ping
+                if (strData.ping){
+                    socket.send(JSON.stringify({pong:ping}))
+                }
+                console.log(strData)
+            }
+            // var binaryString = pako.gzip(e.data, { to: 'string' });
+            // console.log('Message from server ', e.data);
+        })
+        socket.addEventListener('close', function (e) {
+            console.log('close');
+            // console.log(binaryString)
+        })
+    }
+</script>
+</html>

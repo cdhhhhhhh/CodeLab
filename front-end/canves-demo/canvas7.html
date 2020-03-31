@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html{
+        text-align: center;
+        background: black;
+    }
+    canvas{
+        background: white;
+    }
+</style>
+<body>
+<canvas id="canvas" width="800" height="600"></canvas>
+</body>
+<script>
+    let oC = document.getElementById('canvas')
+    let gd = oC.getContext('2d')
+
+    let oImg = new Image()
+    oImg.src = '../img/banner1.jpg'
+    oImg.onload = function () {
+        gd.drawImage(oImg,428,43,200,200,100,100,200,200)
+    }
+
+</script>
+</html>

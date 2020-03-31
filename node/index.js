@@ -9,6 +9,7 @@ const mysql = require('mysql')
 const socket = require('socket.io')
 const uid = require('uuid/v4')
 const zlib = require('zlib')
+
 const db = mysql.createConnection({
     host: 'localhost',
     port: 3306,
@@ -112,8 +113,6 @@ http.createServer((req, res) => {
                     res.end('404 Not Find')
                 });
         }
-
-
     } else if (req.method === 'POST') {
         let arr = ''
         req.on('data', function (data) {
@@ -122,8 +121,6 @@ http.createServer((req, res) => {
         req.on('end', function () {
             //querystring.encode(arr)  用于
             res.setHeader('Access-Control-Allow-Origin','*')
-
-
             res.end()
         })
     }
@@ -155,5 +152,6 @@ http.createServer((req, res) => {
     //     }
     //     res.end()
     // })
+
 }).listen(8081);
 

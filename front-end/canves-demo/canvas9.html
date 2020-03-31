@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html{
+        text-align: center;
+        background: black;
+    }
+    canvas{
+        background: white;
+    }
+</style>
+<body>
+<canvas id="canvas" width="800" height="600"></canvas>
+</body>
+<script>
+    let oC = document.getElementById('canvas')
+    let gd = oC.getContext('2d')
+
+    let oImg = new Image()
+    oImg.src = '../img/banner1.jpg'
+    oImg.onload = function () {
+        gd.drawImage(oImg,0,0)
+
+        let imageData = gd.getImageData(0,0,oC.width,oC.height)
+
+
+        for (let r =0;r<oC.height;r++){
+            for (let j =0;j<oC.width;j++){
+                imageData.data [(oC.width*r+j)*4+2]=0
+            }
+        }
+        gd.putImageData(imageData,0,0)
+    }
+
+</script>
+</html>
