@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1, user-scalable=no">
+</head>
+<link rel="stylesheet" href="css/style.css">
+<style>
+    body {
+        margin: 0;
+        font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+        width: 100vw;
+        padding-top: 44px; /* 兼容 iOS >= 11.2 */
+        background-size: cover;
+        -webkit-touch-callout: none;
+        -moz-user-select: none; /*火狐*/
+        -webkit-user-select: none;  /*webkit浏览器*/
+        -ms-user-select: none;   /*IE10*/
+        user-select: none;
+        overflow: hidden;
+    }
+
+    canvas {
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    #loading{
+        height: 100vh;
+        width: 100vw;
+        z-index: 111111;
+        top: 0;
+        position: absolute;
+    }
+
+    #bg1{
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        background: url("./img/home_bg.png");
+    }
+    #bg-mining{
+        background: url("./img/bg/bj8.png");
+        transition: 1s;
+        background-size: cover;
+    }
+    #equip-bg{
+        background: url("./img/equipBg.png");
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        background-size: cover;
+        opacity: 1;
+    }
+
+   
+
+</style>
+<script>
+    let fontsize = window.getComputedStyle(document.documentElement).fontSize;
+    let width = document.documentElement.getBoundingClientRect().width;
+    function changeRem() {
+
+        let num;
+        if (fontsize!=='16px'){
+            num = 16/Number.parseFloat(fontsize);
+            document.documentElement.style.fontSize = width / 10.8*num + 'px';
+        } else {
+            document.documentElement.style.fontSize = width / 10.8 + 'px';
+        }
+    }
+    changeRem();
+</script>
+<body>
+
+
+<div class="bg" id="bg1" style="background-size: cover;"></div>
+<div class="bg" id="bg-mining" style="display: none;"></div>
+<div  id="equip-bg" style="z-index: 111;display: none"></div>
+
+<div style="position: absolute;bottom: 0">
+
+    <div id="dragon">
+        <div class="bg-left bg-arrow">
+            <img src="img/jiantou_green.png" alt="">
+        </div>
+        <div class="dragon-tip" style="display: none;">
+        </div>
+        <div class="float-option float-position-one" style="display: none">
+            <div>
+                <div class="float-option-img">
+                    <img src="img/组%20780.png" alt="">
+                </div>
+                <span>蹦跳</span>
+            </div>
+            <div>
+                <div class="float-option-img">
+                    <img src="img/组%20780.png" alt="">
+                </div>
+                <span>嬉戏</span>
+            </div>
+            <div>
+                <div class="float-option-img">
+                    <img src="img/组%20780.png" alt="">
+                </div>
+                <span>张望</span>
+            </div>
+            <div>
+                <div class="float-option-img">
+                    <img src="img/组%20780.png" alt="">
+                </div>
+                <span>吃肉</span>
+            </div>
+
+        </div>
+   
+
+        <div class="select-option-btn-list select-option-btn-left">
+            <div id="action" class="select-option-icon">
+                <img src="img/组%20735.png" alt="">
+            </div>
+        
+        </div>
+    
+    </div>
+
+
+
+    <div class="dragon-info">
+        
+        <div class="bottom-btn">
+            <div class="dispatch">
+                改变背景
+            </div>
+            <div class="exchange">
+                改变皮肤
+            </div>
+        </div>
+        <div class="bottom-btn">
+            <div class="detel-model">
+                删除模型
+            </div>
+            <div class="add-model">
+                加载模型
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript" src="../indexMobile/main.1732f9b035de918d2b27.js"></script></body>
+<script src="img/inflate.min.js"></script>
+</html>

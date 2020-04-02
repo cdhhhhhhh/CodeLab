@@ -1,0 +1,607 @@
+* {
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+p{
+    margin: 0;
+}
+ul{
+    margin: 0;
+}
+.transition-show{
+    transition: 1s;
+}
+.bg{
+    background: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -1111;
+    top: 0;
+    transition: 1s;
+    animation: bg-change 1s;
+    background-size: cover;
+    opacity: 1;
+}
+@keyframes bg-change {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.info-tips{
+    z-index: 111;
+    position: absolute;
+    left: calc(50vw - 3.9rem);
+    width:7.8rem;
+    background:rgba(0,0,0,0.8);
+    border-radius: 0.2rem;
+    font-size:0.34rem;
+    color: white;
+    padding: 0.58rem 0.59rem 0.7rem 0.74rem;
+    animation: tip-opca 0.5s;
+}
+.info-tips div{
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    width: 0.34rem;
+    height: 0.34rem;
+}
+@keyframes tip-opca {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.info-tips p:first-child{
+    color:rgba(202,222,114,1);
+}
+.add-goods {
+    position: absolute;
+    top: 2rem;
+    width: 8.83rem;
+    height: 10rem;
+    border-radius: 0.49rem;
+    background: white;
+    font-size: 0.36rem;
+    z-index: 99999;
+    left: calc(50% - 8.83rem/2);
+    animation: bg-change 0.3s;
+}
+
+.add-goods-tip {
+    position: absolute;
+    top: -1.01rem;
+    left: calc(8.83rem / 2 - 6.16rem / 2);
+    width: 6.16rem;
+    height: 1.01rem;
+    border-radius: 0.16rem;
+    border: 1px solid rgba(208, 226, 125, 1);
+    background: rgba(251, 254, 252, 1);
+    line-height: 1.01rem;
+    text-align: center;
+}
+
+.add-goods-title {
+    background: linear-gradient(180deg, rgba(248, 250, 237, 1) 0%, rgba(255, 243, 172, 1) 100%);
+    text-align: center;
+    position: relative;
+    font-size: 0.82rem;
+    height: 1.81rem;
+    line-height: 1.81rem;
+    color: rgba(238, 129, 49, 1);
+    font-weight: 400;
+    border-radius: 0.49rem 0.49rem 0 0;
+    border-bottom: 1px solid rgba(238,129,49,1);
+}
+
+.add-goods-title-img {
+    position: absolute;
+    top: calc(1.81rem / 2 - 1.16rem / 2);
+    right: 0.3rem;
+    width: 1.16rem;
+    height: 1.16rem;
+}
+
+.add-goods-details {
+    width: 8.30rem;
+    height: 2.22rem;
+    background: rgba(243, 243, 243, 1);
+    border: 0.02rem solid rgba(229, 216, 197, 1);
+    box-shadow: 0 0.06rem 0 rgba(229, 216, 197, 1);
+    border-radius: 0.32rem;
+    display: flex;
+    padding: 0.15rem 0.64rem 0.15rem 0.15rem;
+    margin: 0.2rem auto 0.5rem;
+    justify-content: space-between;
+
+}
+
+.add-goods-details div {
+    display: inline-block;
+}
+
+.add-goods-details div:first-child {
+    width: 2.7rem;
+    height: 1.79rem;
+}
+
+.add-goods-details div:last-child {
+    margin-left: 0.3rem;
+}
+
+.add-goods-details-text p:first-child {
+    color: rgba(216, 150, 102, 1);
+    font-size: 0.41rem;
+    font-weight: 400;
+}
+
+.add-goods-details-text p:last-child {
+    color: rgba(144, 144, 144, 1);
+    font-weight: 200;
+    font-size: 0.41rem;
+}
+
+.add-goods-rest-num {
+    height: 1.36rem;
+    width: 8.3rem;
+    background: rgba(243, 243, 243, 1);
+    border-radius: 0.32rem 0.32rem 0 0;
+    margin: 0.05rem auto;
+    display: flex;
+    padding: 0.26rem 0.53rem;
+    align-items: center;
+    font-size: 0.34rem;
+    justify-content: space-between;
+}
+
+#go-shop {
+    width: 1.8rem;
+    height: 0.62rem;
+    background: url("../img/矩形 487.png");
+    background-size: cover;
+    line-height: 0.62rem;
+    color: rgba(255, 255, 255, 1);
+    font-weight: 200;
+    text-align: center;
+}
+
+.add-goods-buy-num {
+    height: 1.71rem;
+    width: 8.3rem;
+    background: rgba(243, 243, 243, 1);
+    border-radius: 0 0  0.32rem 0.32rem;
+    margin: 0 auto;
+    display: flex;
+    padding: 0.46rem 0.53rem;
+    justify-content: space-between;
+}
+.add-goods-buy-num-block{
+    display: flex;
+}
+#input-num input {
+    background: rgba(212, 212, 212, 1);
+    border-radius: 31px;
+    border: 0;
+    width: 1.90rem;
+    height: 0.62rem;
+    text-align: center;
+}
+#input-num input:focus{
+    outline: 0;
+    text-align: center;
+}
+#reduce {
+    width: 0.74rem;
+    height: 0.74rem;
+}
+
+#add {
+    width: 0.74rem;
+    height: 0.74rem;
+}
+
+#max {
+    width: 0.74rem;
+    height: 0.74rem;
+    line-height: 0.74rem;
+    text-align: center;
+}
+.add-goods-buy-btn{
+    margin: 0.4rem 0.36rem;
+    display: flex;
+    justify-content: space-between;
+}
+#cancel{
+    width: 3.11rem;
+    height: 1.17rem;
+    background: url("../img/785.png");
+    background-size: cover;
+    font-size: 0.52rem;
+    color: white;
+    line-height: 1.17rem;
+    text-align: center;
+
+}
+#confirm{
+    width: 3.11rem;
+    height: 1.17rem;
+    line-height: 1.17rem;
+    font-size: 0.52rem;
+    color: white;
+    text-align: center;
+    background: url("../img/785.png");
+    background-size: cover;
+}
+#waitOffice{
+    top: 40vh;
+    z-index: 111;
+    position: absolute;
+    left: calc(50vw - 3.9rem);
+    width:7.8rem;
+    background: rgba(0, 0, 0, 0.77);
+    border-radius: 0.2rem;
+    font-size:0.5rem;
+    color: white;
+    padding: 0.58rem 0.59rem 0.7rem 0.74rem;
+    animation: tip-opca 0.5s;
+    text-align: center;
+}
+#waitOffice p{
+    color: white;
+}
+.waitOfficeClose{
+    margin: 0.5rem auto 0;
+    width: 2rem;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 0.5rem;
+    border-radius: 0.5rem;
+    color: rgba(208,226,125,1);
+}
+.notion{
+    width: 9.88rem;
+    margin: 0 auto;
+    height: 30px;
+    padding: 0 0.3rem;
+    color: white;
+    font-size:0.36rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    background:rgba(28,28,30,0.18);
+    border-radius:0.55rem;
+}
+.notion-laba{
+    position: absolute;
+    width: 0.4rem;
+    height: 0.4rem;
+    bottom: calc(50% - 0.2rem);
+}
+.notion-laba img{
+    width: 100%;
+    height: 100%;
+}
+.notion ul{
+    transition: 1s;
+    padding-left:0.9rem ;
+}
+.notion ul li{
+    overflow: hidden;
+    height: 30px;
+    line-height: 30px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.top-option {
+    display: flex;
+    z-index: 1111;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 0.46rem 0.35rem;
+}
+
+.top-option > div {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 3.04rem;
+    height: 0.74rem;
+    padding: 0 0.1rem;
+    background: rgba(0, 0, 0, 0.18);
+    /*box-shadow: 0px 2px 0px rgba(255, 255, 255, 0.35);*/
+    border-radius: 40px;
+    font-size: 0.36rem;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.42);
+}
+
+.top-option > div div {
+    display: inline-block;
+}
+
+.top-option > div div:first-child {
+    width: 0.67rem;
+    height: 0.67rem;
+}
+
+.top-option > div div:last-child {
+    width: 0.67rem;
+    height: 0.67rem;
+    position: relative;
+    bottom: -1px;
+}
+
+#dragon {
+    position: relative;
+}
+.dragon-tip{
+    font-size: 0.4rem;
+    position: absolute;
+    height: 1.01rem;
+    padding: 0.27rem 0.47rem;
+    border:.02rem solid rgba(208,226,125,1);
+    border-radius:.16rem;
+    background:rgba(251,254,252,1) ;
+    bottom: 4rem;
+}
+.bg-arrow{
+    width: .47rem;
+    height: .78rem;
+    position: absolute;
+    bottom: 3.5rem;
+}
+.bg-left{
+    left: 0.47rem;
+}
+.bg-right{
+    right: 0.47rem;
+
+}
+.float-option {
+    background: rgba(112, 112, 112, 1);
+    left: 2rem;
+    /*width: 1.5rem;*/
+    padding: 0.1rem;
+    position: absolute;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.3rem;
+    border-radius: 0.3rem;
+    text-align: center;
+    animation: bg-change 0.3s;
+}
+
+.float-option::after {
+    content: "";
+    position: absolute;
+    left: -0.55rem;
+    transform: rotate(90deg);
+    bottom: 1.1rem;
+    border-width: 0.3rem;
+    border-style: solid;
+    border-color: rgba(112, 112, 112, 1) transparent transparent transparent;
+}
+
+.float-position-one {
+    bottom: 0.7rem;
+
+}
+
+.float-position-two {
+    bottom: -0.8rem;
+}
+
+.float-option > div {
+    margin-bottom: 0.4rem;
+}
+
+.float-option > div:first-child {
+    margin-top: 0.4rem;
+}
+
+.float-option-img {
+    margin: 0 auto;
+    width: 0.83rem;
+    height: 0.83rem;
+}
+
+.shop {
+    position: absolute;
+    top: 3.7rem;
+    right: 0.76rem;
+    width: 1rem;
+    height: 1.16rem;
+}
+.equip{
+    position: absolute;
+    top: 3.7rem;
+    left: 0.76rem;
+    width: 1rem;
+    height: 1.16rem;
+}
+.service{
+    position: absolute;
+    top: calc(3.7rem + 0.4rem + 1.16rem);
+    right: 0.76rem;
+    width: 1rem;
+    height: 1.16rem;
+}
+.select-option {
+    height: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0.46rem;
+    position: absolute;
+    width: calc(100vw - 0.46rem * 2);
+    bottom: 0;
+}
+
+.select-option-btn-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.select-option-btn-right{
+    position: absolute;
+    right: 0.76rem;
+    bottom: 0;
+}
+.select-option-btn-left{
+    position: absolute;
+    left: 0.76rem;
+    bottom: 0;
+}
+.select-option-icon {
+    height: 1.09rem;
+    width: 0.95rem;
+    margin-top: 0.4rem;
+}
+
+.select-option-info {
+    position: absolute;
+    left: calc(50% - 1.5rem);
+    width: 4rem;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 0;
+}
+
+.select-option-info div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-option-info div div:first-child {
+    width: 2.65rem;
+    height: 0.86rem;
+    background: rgba(179, 176, 173, 0.28);
+    border-radius: 0.55rem;
+    font-size: 0.50rem;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 1);
+    opacity: 1;
+    text-align: center;
+}
+
+.select-option-info div div:first-child span:last-child {
+    font-size: 0.40rem;
+    font-weight: bold;
+    color: rgba(242, 70, 70, 1);
+    margin-left: 0.1rem;
+}
+
+.select-option-info div div:last-child {
+    width: 0.54rem;
+    height: 0.54rem;
+    margin-left: 0.2rem;
+}
+
+.dragon-info {
+
+    display: flex;
+    margin: 0 1.5rem;
+    flex-direction: column;
+}
+
+.dragon-info-energy {
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dragon-info-energy span {
+    font-size: 0.42rem;
+    font-weight: 500;
+    color: rgba(90, 90, 99, 1);
+
+}
+
+.dragon-info-energy-num {
+    position: relative;
+    width: 5.3rem;
+    height: 0.56rem;
+    background: rgba(90, 90, 99, 1);
+    border-radius: 0.28rem;
+    z-index: -2;
+}
+
+.dragon-info-energy-num span {
+    display: block;
+    text-align: center;
+    color: black;
+}
+
+.dragon-info-energy-num div {
+    position: absolute;
+    width: 0;
+    height: 0.56rem;
+    background: linear-gradient(180deg, rgba(90, 181, 250, 1) 0%, rgba(90, 224, 249, 1) 100%);
+    top: 0;
+    border-radius: 0.28rem;
+    z-index: -1;
+}
+
+.dragon-info-energy-add {
+    width: 0.56rem;
+    height: 0.56rem;
+}
+
+.dragon-info-detail div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.3rem;
+    border-radius: 0.27rem;
+    width: 7.80rem;
+    height: 0.64rem;
+    font-size: 0.36rem;
+    color: rgba(72, 72, 72, 0.7);
+    font-weight: 500;
+    transition: 1s;
+}
+
+.dragon-info-detail div:nth-child(2n+1) {
+    background: rgba(28, 28, 30, 0.09);
+}
+
+.dragon-info-detail div:nth-child(2n) {
+
+}
+.bottom-btn {
+    margin: 0.4rem 0;
+    width: 7.8rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.bottom-btn div {
+    width: 3.11rem;
+    height: 1.17rem;
+    text-align: center;
+    font-weight: 400;
+    font-size: 0.52rem;
+    color: white;
+    line-height: 1.17rem;
+    background: url("../img/btn_shouhui_normal.png");
+    background-size: cover;
+}
+
+
