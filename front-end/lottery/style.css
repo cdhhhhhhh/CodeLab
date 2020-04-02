@@ -1,0 +1,363 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.mask{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,0.7);
+    z-index: 10;
+}
+.win{
+    display: none;
+    background: url("./img/zhongjiangtanchaung.png") no-repeat;
+    background-size: contain;
+    width: 8.66rem;
+    height:10rem ;
+    z-index: 20;
+    position: absolute;
+    top: calc(50% - 4.08rem);
+    left: calc(50% - 4.33rem);
+}
+.win-crown {
+    position: absolute;
+    left: -1.3rem;
+    top: 0;
+    width: 2.15rem;
+    height: 2.07rem;
+}
+.win-crown img{
+    width: 100%;
+    height: 100%;
+}
+.win-top{
+    margin-top: 2rem;
+    text-align: center;
+    padding-top: 0.5rem;
+}
+.win-top p{
+    width: 4.51rem;
+    margin: 0 auto;
+    font-size: 0.77rem;
+    font-weight:500;
+    color: white;
+}
+
+.win-bottom{
+position: absolute;
+    bottom: 1.5rem;
+    width: 6.58rem;
+    left: calc(50% - 3.29rem);
+}
+.win-bottom-text{
+    text-align: center;
+    color:rgba(178,74,255,1);
+    font-size: 0.38rem;
+}
+.win-bottom-btn{
+    text-align: center;
+}
+.win-bottom-btn div{
+    width:2.89rem;
+    height:0.80rem;
+    box-shadow:0px -6px 0px 0px rgba(182,54,32,1);
+    border-radius:40px;
+    color: white;
+    font-size: 0.36rem;
+    text-align: center;
+    display: inline-block;
+}
+
+.win-bottom-btn div:nth-child(1){
+     background:rgba(229,75,49,1);
+ }
+
+.win-bottom-btn div:nth-child(2){
+    background:rgba(229,109,49,1);
+}
+
+.lose{
+    display: none;
+    z-index: 20;
+    position: absolute;
+    width:6.71rem;
+    height:7.51rem;
+    background:rgba(255,255,255,1);
+    top: calc(50% - 4.08rem);
+    margin-left:calc(50% - 3.35rem);
+    background: url("./img/tanchaungweizhongjiang.png") no-repeat;
+    background-size: cover;
+}
+.lose-content{
+    position: absolute;
+    bottom: 0rem;
+    width: 6rem;
+    left: calc(50% - 3rem);
+}
+.lose-text{
+    text-align: center;
+}
+.lose-text p:nth-child(1){
+    font-size: 0.48rem;
+    color:rgba(51,51,51,1);
+
+}
+.lose-text p:nth-child(2){
+    font-size: 0.30rem;
+    color:rgba(136,136,136,1);
+}
+.lose-btn{
+    text-align: center;
+    width:2.89rem;
+    margin: 0 auto;
+    height:0.80rem;
+    background:rgba(229,75,49,1);
+    box-shadow:0px -6px 0px 0px rgba(182,54,32,1);
+    border-radius:0.40rem;
+    color: white;
+    font-size:0.36rem;
+    margin-top: 0.5rem;
+
+}
+.lose-close-btn{
+    position: relative;
+    left: calc(50% - 0.44rem);
+    bottom: -1rem;
+    width: 0.88rem;
+    height: 0.88rem;
+}
+.lose-close-btn img{
+    width: 100%;
+    height: 100%;
+}
+.rule{
+    display: none;
+    z-index: 20;
+    position: absolute;
+    top: calc(50% - 5.55rem);
+    width: 9.88rem;
+    height: 9.55rem;
+    background: white;
+    margin-left: 0.43rem;
+}
+.rule-title{
+    position: relative;
+    height:2.31rem ;
+    background:linear-gradient(0deg,rgba(80,26,121,1),rgba(74,60,142,1));
+    font-size: 0.82rem;
+    color: white;
+    line-height: 2.31rem;
+    text-align: center;
+}
+.rule-title img{
+    position: absolute;
+    right: 1rem;
+    top: 0.73rem;
+    width: 0.84rem;
+    height: 0.84rem;
+}
+
+.rule-content{
+    font-size: 0.39rem;
+    font-weight:normal;
+    color:rgba(89,62,58,1);
+    text-align: left;
+    padding-top:2.03rem ;
+    padding-left: 0.51rem;
+    padding-right:  0.51rem;
+}
+
+.rule-content span{
+    padding: 0.01rem;
+    text-align: center;
+    display: inline-block;
+    width: 0.42rem;
+    height: 0.42rem;
+    color: white;
+    background:rgba(255,53,107,1);
+    border-radius:4px;
+	line-height: 0.42rem;
+}
+
+body{
+   height: 100vh;
+    background:linear-gradient(0deg,rgba(111,100,221,1),rgba(122,25,172,1),rgba(76,3,129,1));
+    box-shadow:2px -46px 79px 0px rgba(0, 0, 0, 0.44);
+}
+.top-rule{
+    position: fixed;
+    height:1.5rem;
+    right: 1rem;
+    color:rgba(172,0,136,1);
+
+}
+.top-rule div{
+    width:1.15rem;
+    height:1.5rem;
+    background: url('./img/choujiangguize.png') no-repeat;
+    background-size: contain;
+    text-align: center;
+    padding: 0.05rem;
+    box-sizing: border-box;
+    font-size: 0.20rem;
+    float: right;
+}
+.bg-title{
+    background: url("./img/banner_zhongwen.png") no-repeat;
+    height: 7.7rem;
+    background-size: contain;
+}
+.lottery{
+    margin:0.4rem ;
+    background:rgba(104,41,200,1);
+    box-shadow:0px 10px 20px 0px rgba(0, 0, 0, 0.26);
+    border-radius:18px;
+    padding-top: 0.44rem;
+}
+.lottery-title{
+    width: 7.97rem;
+    height: 1.19rem;
+    background:rgba(82,21,174,1);
+    border-radius:41px;
+    margin: 0 auto;
+    margin-bottom: 0.44rem;
+}
+.lottery-title-l{
+    display: inline-block;
+    width: 1.22rem;
+    height: 1.34rem;
+}
+.lottery-title-l img{
+    width: 100%;
+    height: 100%;
+}
+.lottery-title-r{
+    display: inline-block;
+    color:rgba(255,252,178,1);
+    vertical-align: top;
+}
+.lottery-title-r-text{
+    width: 4.84rem;
+    font-size: 0.24rem;
+    display: inline-block;
+    text-align: center;
+}
+.lottery-title-r-img{
+    display: inline-block;
+    width: 0.69rem;
+    height: 1.08rem;
+    position: relative;
+    right: -0.5rem;
+}
+.lottery-title-r img{
+    width: 100%;
+    height: 100%;
+}
+
+.lottery-turntable{
+    background: url("./img/dikuang.png") no-repeat;
+    background-size: contain;
+    box-sizing: border-box;
+    width: 9.39rem;
+    height: 8.05rem;
+    margin: 0 auto;
+    padding: 0.5rem;
+}
+.select-area{
+    border:4px solid rgba(255,0,0,1);
+    border-radius: 0.2rem;
+}
+.lottery-turntable-area{
+    float: left;
+    box-sizing: border-box;
+    width: 2.73rem;
+    height: 2.24rem;
+    background:url("./img/jiangpindikuang.png") no-repeat;
+    background-size: cover;
+    text-align: center;
+    font-size: 0.35rem;
+    margin: 0.03rem;
+}
+.lottery-turntable-area span{
+    font-size: 0.35rem;
+    font-weight:500;
+    color:rgba(162,14,7,1);
+    line-height:0.52rem;
+}
+.thanks{
+    text-align: center;
+    width:1.7rem;
+    height:1.45rem;
+    margin: 0 auto;
+    background:linear-gradient(0deg,rgba(144,38,223,1),rgba(220,81,214,1));
+    border-radius:8px;
+    margin-top: 0.35rem;
+
+}
+.thanks span{
+    vertical-align:sub;
+    color: white;
+    font-size:0.40rem;
+    font-weight:400;
+    margin-top: 10px;
+}
+.lottery-turntable-area-img{
+    margin: 0.1rem auto;
+    width: 1.06rem;
+    height: 1.06rem;
+}
+.lottery-turntable-area-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.lottery-turntable-area:nth-child(5){
+    width: 2.73rem;
+    height: 2.24rem;
+    box-sizing: border-box;
+    padding: 0.16rem 0.19rem;
+    background: url("./img/lijichoujiang.png") no-repeat;
+    background-size: contain;
+
+}
+
+.lottery-turntable-area:nth-child(5)>div{
+    width: 2.35rem;
+    height: 1.93rem;
+    margin: 0 auto;
+    background:linear-gradient(0deg,rgba(82,5,120,1),rgba(155,30,188,1));
+    box-shadow:0 0 0 -4px rgba(236,55,60,1);
+    border-radius:0.2rem;
+    padding-top: 0.44rem;
+    box-sizing: border-box;
+}
+.lottery-turntable-area:nth-child(5) span{
+    font-size:0.4rem;
+    font-weight:normal;
+    color: white;
+}
+.lottery-turntable-area:nth-child(5) span:nth-child(2){
+    font-size:0.5rem;
+    font-weight:normal;
+    color:rgba(255,221,56,1);
+}
+.check-gift{
+    margin: 0 auto;
+    width: 5.63rem;
+    height: 1.22rem;
+    font-size: 0.58rem;
+    color:rgba(193,34,146,1);
+    background:rgba(254,200,98,1);
+    box-shadow:0px 4px 0px 0px #A30886;
+    border-radius:42px;
+    text-align: center;
+    line-height: 1.22rem;
+    margin-top: 1.02rem;
+    margin-bottom: 1.02rem;
+}
