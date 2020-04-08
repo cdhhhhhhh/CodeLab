@@ -13,7 +13,7 @@ function vuexDeepCopy(obj, cache = []) {
     if (obj === null && typeof obj !== 'object') {
         return obj;
     }
-
+ 
     const hit = cache.filter(c => c.original === obj)[0]
     if (hit) {
         return hit.copy;
